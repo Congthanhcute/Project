@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Job Finder</title>
+    <style>
+        /* Đặt nền tảng cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Header - Thanh điều hướng */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #f4f4f4;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .hero button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .hero button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        /* Job Listings Section */
+        .jobs {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .jobs h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        .job-listing {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .job-listing h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .job-listing p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .job-listing button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .job-listing button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Job Finder</h1>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Find Your Dream Job</h2>
+    <p>Browse through thousands of job opportunities and apply with a single click.</p>
+    <button onclick="location.href='jobs.html'">Browse Jobs</button>
+    <button onclick="location.href = 'profile.html'">Browse profile</button>
+
+
+</section>
+
+<!-- Search Bar -->
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for jobs...">
+    <button onclick="searchJobs()">Search</button>
+</div>
+
+<!-- Job Listings Section -->
+<section class="jobs">
+    <h2>Latest Jobs</h2>
+    
+    <div id="job-listings">
+        <div class="job-listing">
+            <div class="job-info">
+                <h3>Frontend Developer</h3>
+                <p>Location: Hanoi</p>
+                <p>Skills: JavaScript, HTML, CSS</p>
+            </div>
+            <button onclick="applyJob('Frontend Developer', 'Hanoi', 'JavaScript, HTML, CSS')">Apply Now</button>
+        </div>
+
+        <div class="job-listing">
+            <div class="job-info">
+                <h3>Backend Developer</h3>
+                <p>Location: Ho Chi Minh City</p>
+                <p>Skills: Java, Spring Boot, SQL</p>
+            </div>
+            <button onclick="applyJob('Backend Developer', 'Ho Chi Minh City', 'Java, Spring Boot, SQL')">Apply Now</button>
+        </div>
+
+        <div class="job-listing">
+            <div class="job-info">
+                <h3>UI/UX Designer</h3>
+                <p>Location: Da Nang</p>
+                <p>Skills: Adobe XD, Figma, Photoshop</p>
+            </div>
+            <button onclick="applyJob('UI/UX Designer', 'Da Nang', 'Adobe XD, Figma, Photoshop')">Apply Now</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    function applyJob(jobTitle, jobLocation, jobSkills) {
+    // Tạo đối tượng công việc
+    const appliedJob = {
+        title: jobTitle,
+        location: jobLocation,
+        skills: jobSkills
+    };
+
+    // Kiểm tra nếu đã có công việc lưu trữ trong localStorage chưa
+    let appliedJobs = JSON.parse(localStorage.getItem('appliedJobs')) || [];
+
+    // Thêm công việc mới vào danh sách
+    appliedJobs.push(appliedJob);
+
+    // Lưu lại danh sách công việc vào localStorage
+    localStorage.setItem('appliedJobs', JSON.stringify(appliedJobs));
+
+    alert('You have successfully applied for the ' + jobTitle + ' position.');
+}
+
+</script>
+
+<script>
+    function searchJobs() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const jobListings = document.getElementById('job-listings');
+        const jobs = jobListings.getElementsByClassName('job-listing');
+
+        for (let i = 0; i < jobs.length; i++) {
+            const jobTitle = jobs[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+            const jobLocation = jobs[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+            const jobSkills = jobs[i].getElementsByTagName('p')[1].innerText.toLowerCase();
+
+            if (jobTitle.includes(input) || jobLocation.includes(input) || jobSkills.includes(input)) {
+                jobs[i].style.display = 'flex'; // Hiển thị kết quả khớp
+            } else {
+                jobs[i].style.display = 'none'; // Ẩn kết quả không khớp
+            }
+        }
+    }
+</script>
+ 
+<script>
+    // Hiển thị tên người dùng đã đăng nhập
+    window.onload = function() {
+        const user = JSON.parse(localStorage.getItem('user'));
+    
+        if (user) {
+            document.getElementById('welcome-user').textContent = 'Welcome, ' + user.name;
+        }
+    }
+    </script>
+<script>
+    // Apply công việc
+</script>
+
+
+
+</body>
+</html>

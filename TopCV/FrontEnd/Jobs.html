@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        /* Đặt nền tảng cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Header - Thanh điều hướng */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* EDIT-Button*/
+        
+
+        /* Search Bar */
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        /* Job Listings Section */
+        .jobs {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .jobs h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        .job-listing {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .job-listing h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .job-listing p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .job-listing a {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .job-listing a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Job Finder</h1>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Search Bar -->
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for jobs..." onkeyup="searchJobs()">
+    <button onclick="searchJobs()">Search</button>
+</div>
+
+<!-- Job Listings Section -->
+<section class="jobs">
+    <h2>Job Listings</h2>
+    
+    <div id="job-listings">
+        <div class="job-listing">
+            <div class="job-info">
+                <h3>Frontend Developer</h3>
+                <p>Location: Hanoi</p>
+                <p>Skills: JavaScript, HTML, CSS</p>
+            </div>
+            <a href="job-detail.html?id=1">View Details</a>
+        </div>
+
+        <div class="job-listing">
+            <div class="job-info">
+                <h3>Backend Developer</h3>
+                <p>Location: Ho Chi Minh City</p>
+                <p>Skills: Java, Spring Boot, SQL</p>
+            </div>
+            <a href="job-detail.html?id=2">View Details</a>
+        </div>
+
+        <div class="job-listing">
+            <div class="job-info">
+                <h3>UI/UX Designer</h3>
+                <p>Location: Da Nang</p>
+                <p>Skills: Adobe XD, Figma, Photoshop</p>
+            </div>
+            <a href="job-detail.html?id=3">View Details</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    function searchJobs() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const jobListings = document.getElementById('job-listings');
+        const jobs = jobListings.getElementsByClassName('job-listing');
+
+        for (let i = 0; i < jobs.length; i++) {
+            const jobTitle = jobs[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+            const jobLocation = jobs[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+            const jobSkills = jobs[i].getElementsByTagName('p')[1].innerText.toLowerCase();
+
+            if (jobTitle.includes(input) || jobLocation.includes(input) || jobSkills.includes(input)) {
+                jobs[i].style.display = 'flex'; // Hiển thị kết quả khớp
+            } else {
+                jobs[i].style.display = 'none'; // Ẩn kết quả không khớp
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>You have been logged out!</h1>
+<p>Click below to log in again or return to the homepage.</p>
+<button onclick="goToLogin()">Login Again</button>
+<button onclick="goToHome()">Go to Homepage</button>
+
+<script>
+// Điều hướng về trang login
+function goToLogin() {
+    window.location.href = 'login.html';
+}
+
+// Điều hướng về trang chủ
+function goToHome() {
+    window.location.href = 'home.html';
+}
+
+// Xóa thông tin đăng nhập khi người dùng vào trang logout
+window.onload = function() {
+    // Xóa thông tin người dùng từ localStorage hoặc sessionStorage
+    localStorage.removeItem('user');  // Hoặc sessionStorage.removeItem('user') nếu bạn dùng sessionStorage
+
+    alert('You have successfully logged out.');
+};
+</script>
+
+</body>
+</html>

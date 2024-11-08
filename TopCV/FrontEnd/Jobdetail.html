@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Detail</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .job-detail {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .job-detail h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .job-detail p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .job-detail a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .job-detail a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Job Finder</h1>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Job Detail Section -->
+<div class="job-detail">
+    <h2>Frontend Developer</h2>
+    <p><strong>Location:</strong> Hanoi</p>
+    <p><strong>Skills Required:</strong> JavaScript, HTML, CSS</p>
+    <p><strong>Job Description:</strong> We are looking for a Frontend Developer to join our team to develop and maintain the user interface of our web applications.</p>
+    <p><strong>Salary:</strong> $1500 - $2000/month</p>
+    <a href="apply.html">Apply Now</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Ngăn chặn form gửi dữ liệu theo cách truyền thống
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+        
+        errorMessage.textContent = ''; // Xóa thông báo lỗi cũ
+
+        // Tạo request AJAX để gửi dữ liệu đến server
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'login', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.status === 'success') {
+                    alert('Login thành công!');
+                    window.location.href = 'home.html';  // Điều hướng tới trang home
+                }
+            } else if (xhr.status === 401) {
+                const response = JSON.parse(xhr.responseText);
+                errorMessage.textContent = response.message;
+            }
+        };
+
+        xhr.send(`username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+    });
+</script>

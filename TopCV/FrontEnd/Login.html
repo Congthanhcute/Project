@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <img src="https://example.com/cv-icon.png" alt="Tìm đâu hình bóng của em !"> <!-- Replace with a real image URL -->
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <div id="error-message" class="error-message"></div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+        
+        errorMessage.textContent = ''; // Clear previous error
+
+        // Sample user data for validation (can be replaced with actual server data)
+        const validUser = {
+            username: 'Thanh',
+            password: '09092003',
+            name: 'Cong thanh'
+        };
+
+        if (username === validUser.username && password === validUser.password) {
+            // Store user info in localStorage
+            localStorage.setItem('user', JSON.stringify(validUser));
+            
+            // Redirect to home page
+            window.location.href = 'home.html';
+        } else {
+            errorMessage.textContent = 'Username hoặc Password không đúng!';
+        }
+    });
+</script>
+
+</body>
+</html>
